@@ -1,14 +1,26 @@
 <mvc:View controllerName="testapp.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <Button
-            text="{i18n>showHelloButtonText}"
-            press=".onShowHello" />
-        <Input 
-            value="{/recipient/name}"
-            description="Hello {/recipient/name}"
-            valueLiveUpdate="true"
-            width="60%" />
+    <Page id="page" title="{i18n>homePageTitle}">
+        <content>
+            <Panel 
+                headerText="{i18n>statsPanelTitle}"
+                class="sapUiResposiveMargin"
+                width="auto">
+                <content>
+                    <Button
+                        text="{i18n>showHelloButtonText}"
+                        press=".onShowHello"
+                        class="sapUiSmallMarginEnd" />
+                    <Input 
+                        value="{/recipient/name}"
+                        valueLiveUpdate="true"
+                        width="60%" />
+                    <Text
+                        text="Hello {/recipient/name}"
+                        class="saoUiSmallMargin" />
+                </content>
+            </Panel>
+        </content>
     </Page>
 </mvc:View>
