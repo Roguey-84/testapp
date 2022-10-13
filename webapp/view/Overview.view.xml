@@ -1,0 +1,60 @@
+<mvc:View controllerName="testapp.controller.Overview"
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="overview" title="{i18n>overviewPageTitle}">
+        <content>
+            <ObjectHeader 
+                id="overviewStats"
+                class="sapUiTinyMargin customPanel sapMITBFilterPositive"
+                icon="sap-icon://nutrition-activity"
+                title="{i18n>overviewPanelTitle}"
+                backgroundDesign="Solid"
+                number="{view>/countAll}"
+                numberState="{= ${view>/countAll} > 0 ? 'Success' : 'Error'}"
+                numberUnit="{i18n>statsQuantity}">
+                <attributes>
+                    <ObjectAttribute title="{i18n>statsSumTitle}" text="{view>/priceSum}" />
+                    <ObjectAttribute title="{i18n>statsAverageTitle}" text="{view>/priceAverage}" />
+                </attributes>
+            </ObjectHeader>
+            <Table
+                id="overviewTable"
+                inset="false"
+                items="{
+                    path: 'view>/products'
+                }"
+                class="sapUiResponsiveMargin"
+                width="auto">
+                <columns>
+                    <Column>
+                        <Text text="{i18n>productNameTitle}"
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>companyTitle}"
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>priceTitle}"
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <ObjectIdentifier title="{view>наименование}" />
+                            <Text text="{view>компания}" />
+                            <ObjectNumber 
+                                number="{
+                                    parts: [{path: 'view/цена'}, {path: 'view/currency'}],
+                                    type: 'sap.ui.model.type.Currency',
+                                    formatOptions: false
+                                }"
+                                unit="{i18n>currencyId}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

@@ -73,6 +73,10 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "product": {
+          "type": "sap.ui.model.json.JSONModel",
+          "uri": "Products.json"
       }
     },
     "resources": {
@@ -94,22 +98,34 @@
       },
       "routes": [
         {
-          "name": "RouteView1",
-          "pattern": ":?query:",
+          "name": "overview",
+          "pattern": "",
           "target": [
-            "TargetView1"
+            "overview"
           ]
+        },
+        {
+            "name": "detail",
+            "pattern": "detail/{productPath}",
+            "target": "detail"
         }
       ],
       "targets": {
-        "TargetView1": {
+        "overview": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "View1",
-          "viewName": "View1"
+          "viewId": "overview",
+          "viewName": "Overview"
+        },
+        "detail": {
+            "viewType": "XML",
+            "transition": "slide",
+            "clearControlAggregation": false,
+            "viewId": "detail",
+            "viewName": "Detail"
+          }
         }
-      }
     },
     "rootView": {
       "viewName": "testapp.view.App",
